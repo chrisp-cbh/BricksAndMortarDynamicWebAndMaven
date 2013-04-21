@@ -1,0 +1,10 @@
+bin/
+.DS_Store
+*.class
+classes/
+*~
+*.war
+*.zip
+/target
+/oldEclipseSetup
+/chromedriver.log

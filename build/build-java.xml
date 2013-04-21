@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<project name="basic-build" default="" basedir=".">
+
+	<target name="clean" description="Clean output directories">
+		<delete dir="${main.build.dir}" />
+		<delete dir="${test.build.dir}" />
+		<delete dir="${fitnesse.build.dir}" />
+		<delete dir="${war.build.dir}" />
+
+		<mkdir dir="${main.build.dir}" />
+		<mkdir dir="${test.build.dir}" />
+		<mkdir dir="${fitnesse.build.dir}" />
+		<mkdir dir="${war.build.dir}" />
+	</target>
+
+	<target name="compile" depends="clean" description="Compile main source tree java files">
+		<javac destdir="${main.build.dir}" source="1.6" target="1.6" debug="true" deprecation="false" optimize="false" failonerror="true">
+			<src path="${main.src.dir}" />
+			<classpath refid="master-classpath" />
+		</javac>
+		<copy todir="${main.build.dir}">
+			<fileset dir="${main.resources.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="test-compile" depends="compile">
+		<javac destdir="${test.build.dir}" source="1.6" target="1.6" debug="true" deprecation="false" optimize="false" failonerror="true">
+			<src path="${test.src.dir}" />
+			<classpath refid="master-classpath" />
+			<classpath refid="test-classpath" />
+		</javac>
+		<copy todir="${test.build.dir}">
+			<fileset dir="${test.resources.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<javac destdir="${fitnesse.build.dir}" source="1.6" target="1.6" debug="true" deprecation="false" optimize="false" failonerror="true">
+			<src path="${fitnesse.src.dir}" />
+			<classpath refid="master-classpath" />
+			<classpath refid="test-classpath" />
+		</javac>
+	</target>
+
+	<target name="test" depends="clean, compile, test-compile" description="Run tests against fitnesse fixture code">
+		<echo>Running tests from : ${test.build.dir}</echo>
+		<junit printsummary="on" fork="false" haltonfailure="false" failureproperty="tests.failed" showoutput="true">
+			<classpath refid="master-classpath" />
+			<classpath refid="test-classpath" />
+			<classpath refid="fitnesse-classpath" />
+			<formatter type="brief" usefile="false" />
+
+			<batchtest>
+				<fileset dir="${test.build.dir}">
+					<include name="**/*Tests.*" />
+					<include name="**/*Test.*" />
+					<exclude name="**/Jdbc*Tests.*" />
+					<exclude name="**/web/*"/>
+					<exclude name="**/webdriver/*"/>
+				</fileset>
+			</batchtest>
+		</junit>
+
+		<fail if="tests.failed">
+			tests.failed=${tests.failed}
+			***********************************************************
+			***********************************************************
+			**** One
+			or more tests failed! Check the output ... ****
+			***********************************************************
+			***********************************************************
+		</fail>
+	</target>
+
+	<target name="test-fitnesse" depends="clean, compile, test-compile" description="Run tests">
+		<echo>Running tests from : ${test.build.dir}</echo>
+		<junit printsummary="on" fork="false" haltonfailure="false" failureproperty="tests.failed" showoutput="true">
+			<classpath refid="master-classpath" />
+			<classpath refid="test-classpath" />
+			<classpath refid="fitnesse-classpath" />
+			<formatter type="brief" usefile="false" />
+
+			<batchtest>
+				<fileset dir="${fitnesse.build.dir}">
+					<include name="**/*Tests.*" />
+					<include name="**/*Test.*" />
+				</fileset>
+			</batchtest>
+		</junit>
+
+		<fail if="tests.failed">
+			tests.failed=${tests.failed}
+			***********************************************************
+			***********************************************************
+			**** One
+			or more tests failed! Check the output ... ****
+			***********************************************************
+			***********************************************************
+		</fail>
+	</target>
+
+	<target name="create-war" depends="test">
+		<copy todir="${war.build.dir}">
+			<fileset dir="${web.src.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${war.build.dir}/WEB-INF/classes">
+			<fileset dir="${main.build.dir}">
+				<include name="**/*.class" />
+			</fileset>
+			<fileset dir="${main.resources.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+
+		<copy todir="${war.build.dir}/WEB-INF/lib">
+			<fileset refid="deps.runtime.fileset" />
+			<!-- This mapper strips off all leading directory information -->
+
+			<mapper type="flatten" />
+		</copy>
+	</target>
+
+	<target name="deploy" depends="create-war">
+		<copy todir="${deploy.path}/${name}" preservelastmodified="true">
+			<fileset dir="${war.build.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="deploywar" depends="create-war">
+		<war destfile="${name}.war" webxml="${war.build.dir}/WEB-INF/web.xml">
+			<fileset dir="${war.build.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</war>
+		<copy todir="${deploy.path}" preservelastmodified="true">
+			<fileset dir=".">
+				<include name="*.war" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="undeploy">
+		<delete>
+			<fileset dir="${deploy.path}/${name}">
+				<include name="**/*.*" />
+			</fileset>
+		</delete>
+	</target>
+	
+</project>
+	

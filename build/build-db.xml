@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<project name="build-db" default="db-create-tables" basedir=".">
+
+	<!-- database tasks -->
+	<target name="db-create-tables">
+		<echo message="CREATE TABLES USING: ${db.driver} ${db.url}" />
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.user}" password="${db.pw}" onerror="continue" src="db/create_products.sql">
+			<classpath refid="master-classpath" />
+		</sql>
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.user}" password="${db.pw}" onerror="continue" src="db/create_sales.sql">
+			<classpath refid="master-classpath" />
+		</sql>
+	</target>
+
+	<target name="db-drop-tables">
+		<echo message="DROP TABLES USING: ${db.driver} ${db.url}" />
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.user}" password="${db.pw}" onerror="continue">
+			<classpath refid="master-classpath" />
+
+			DROP TABLE products;
+			DROP TABLE sales;
+
+		</sql>
+	</target>
+
+	<target name="db-load-data">
+		<echo message="LOAD DATA USING: ${db.driver} ${db.url}" />
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.user}" password="${db.pw}" onerror="continue" src="db/load_product_data.sql">
+			<classpath refid="master-classpath" />
+		</sql>
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.user}" password="${db.pw}" onerror="continue" src="db/load_sale_data.sql">
+			<classpath refid="master-classpath" />
+		</sql>
+	</target>
+
+	<target name="db-print-data">
+		<echo message="PRINT DATA USING: ${db.driver} ${db.url}" />
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.user}" password="${db.pw}" onerror="continue" print="true">
+			<classpath refid="master-classpath" />
+
+			SELECT * FROM products;
+
+		</sql>
+	</target>
+
+	<target name="db-clean-data">
+		<echo message="CLEAR DATA USING: ${db.driver} ${db.url}" />
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.user}" password="${db.pw}" onerror="continue">
+			<classpath refid="master-classpath" />
+
+			DELETE FROM products;
+			DELETE FROM sales;
+
+		</sql>
+	</target>
+
+	<target name="db-shutdown">
+		<echo message="SHUT DOWN DATABASE USING: ${db.driver} ${db.url}" />
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.user}" password="${db.pw}" onerror="continue">
+			<classpath refid="master-classpath" />
+
+			SHUTDOWN;
+
+		</sql>
+	</target>
+	
+</project>

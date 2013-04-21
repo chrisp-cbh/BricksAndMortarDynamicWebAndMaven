@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<project name="springapp" basedir="." default="clean">
+	<property environment="env" />
+	<property name="env.COMPUTERNAME" value="${env.HOSTNAME}" />
+
+	<echo>loading: build-${env.COMPUTERNAME}.properties</echo>
+	<property file="./build/build-${env.COMPUTERNAME}.properties" />
+	<echo>loading: build.properties</echo>
+	<property file="./build/build.properties" />
+
+	<presetdef name="javac">
+		<javac includeantruntime="true" />
+	</presetdef>
+
+	<property name="name" value="bricksandmortar" />
+
+	<property name="main.src.dir" value="src/main/java" />
+	<property name="main.resources.dir" value="src/main/resources" />
+	<property name="web.src.dir" value="src/main/webapp" />
+	<property name="test.src.dir" value="src/test/java" />
+	<property name="test.resources.dir" value="src/test/resources" />
+	<property name="fitnesse.src.dir" value="src/fitnesse/java" />
+	<property name="fitnesse.resources.dir" value="src/fitnesse/resources" />
+
+	<property name="tool.lib.dir" value="lib" />
+	<property name="target.dir" value="target" />
+
+	<property name="main.build.dir" value="${target.dir}/classes" />
+	<property name="test.build.dir" value="${target.dir}/test-classes" />
+	<property name="fitnesse.build.dir" value="${target.dir}/fitnesse-classes" />
+	<property name="war.build.dir" value="${target.dir}/${name}.war" />
+
+	<!-- load dependencies -->
+	<import file="build/build-maven.xml" />
+
+	<path id="master-classpath">
+		<fileset refid="deps.runtime.fileset" />
+		<fileset refid="deps.provided.fileset" />
+		<pathelement path="${main.build.dir}" />
+	</path>
+
+	<path id="test-classpath">
+		<fileset refid="deps.test.fileset" />
+		<pathelement path="${test.build.dir}" />
+	</path>
+
+	<path id="fitnesse-classpath">
+		<fileset refid="deps.test.fileset" />
+		<pathelement path="${fitnesse.build.dir}" />
+	</path>
+
+	<import file="build/build-java.xml" />
+	<import file="build/build-db.xml" />
+	<import file="build/build-tomcat.xml" />
+
+	<target name="clean-all">
+		<delete dir="${target.dir}" />
+		<mkdir dir="${target.dir}" />
+		<antcall target="clean" />
+		<antcall target="gatherTestingLibraries" />
+	</target>
+	
+	<target name="compile-all" depends="compile, test-compile"/>
+
+	<target name="test-db" depends="clean, compile, test-compile, db-drop-tables, db-create-tables, db-load-data" description="Run db tests">
+		<junit printsummary="on" fork="false" haltonfailure="false" failureproperty="tests.failed" showoutput="true">
+			<classpath refid="master-classpath" />
+			<classpath refid="test-classpath" />
+			<formatter type="brief" usefile="false" />
+
+			<batchtest>
+				<fileset dir="${test.build.dir}">
+					<include name="**/Jdbc*Tests.*" />
+					<include name="**/fitnesse/*Test*.*" />
+					<exclude name="**/web/*" />
+				</fileset>
+			</batchtest>
+
+		</junit>
+
+		<fail if="tests.failed">
+			tests.failed=${tests.failed}
+			***********************************************************
+			***********************************************************
+			**** One
+			or more tests failed! Check the output ... ****
+			***********************************************************
+			***********************************************************
+		</fail>
+	</target>
+
+	<target name="test-all" depends="test,test-db" />
+
+</project>
+

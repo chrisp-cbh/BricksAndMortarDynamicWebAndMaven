@@ -1,0 +1,8 @@
+Inner Classes:
+.*\$.*
+
+Tests in a certain package:
+springapp\.webdriver\..*
+
+Longer running integration test:
+.*Jdbc*
