@@ -12,6 +12,15 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+<!-- edit for training
+	<repositories>
+		<repository>
+			<id>training</id>
+			<url>file://D:\mavenrepo</url>
+		</repository>
+	</repositories>
+-->
+
 	<build>
 		<pluginManagement>
 			<plugins>
