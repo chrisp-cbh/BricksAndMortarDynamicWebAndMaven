@@ -115,12 +115,13 @@
 			</fileset>
 		</copy>
 
+		<!--
 		<copy todir="${war.build.dir}/WEB-INF/lib">
 			<fileset refid="deps.runtime.fileset" />
-			<!-- This mapper strips off all leading directory information -->
-
+			 This mapper strips off all leading directory information
 			<mapper type="flatten" />
 		</copy>
+		-->
 	</target>
 
 	<target name="deploy" depends="create-war">
