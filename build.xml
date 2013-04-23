@@ -31,22 +31,32 @@
 	<property name="war.build.dir" value="${target.dir}/${name}.war" />
 
 	<!-- load dependencies -->
-	<import file="build/build-maven.xml" />
+	<!--import file="build/build-maven.xml" /-->
 
 	<path id="master-classpath">
-		<fileset refid="deps.runtime.fileset" />
+		   <fileset dir="${tool.lib.dir}">
+		        <include name="*.jar"/>
+		    </fileset>
+<!--		<fileset refid="deps.runtime.fileset" />
 		<fileset refid="deps.provided.fileset" />
+-->
 		<pathelement path="${main.build.dir}" />
 	</path>
 
 	<path id="test-classpath">
-		<fileset refid="deps.test.fileset" />
-		<pathelement path="${test.build.dir}" />
+		   <fileset dir="${tool.lib.dir}">
+		        <include name="*.jar"/>
+		    </fileset>
+<!--		<fileset refid="deps.test.fileset" />
+-->		<pathelement path="${test.build.dir}" />
 	</path>
 
 	<path id="fitnesse-classpath">
-		<fileset refid="deps.test.fileset" />
-		<pathelement path="${fitnesse.build.dir}" />
+		   <fileset dir="${tool.lib.dir}">
+		        <include name="*.jar"/>
+		    </fileset>
+<!--		<fileset refid="deps.test.fileset" />
+-->		<pathelement path="${fitnesse.build.dir}" />
 	</path>
 
 	<import file="build/build-java.xml" />
@@ -57,7 +67,7 @@
 		<delete dir="${target.dir}" />
 		<mkdir dir="${target.dir}" />
 		<antcall target="clean" />
-		<antcall target="gatherTestingLibraries" />
+		<!--antcall target="gatherTestingLibraries" /-->
 	</target>
 	
 	<target name="compile-all" depends="compile, test-compile"/>

@@ -6,7 +6,7 @@
 	<!-- ============================================================== -->
 
 	<path id="catalina-ant-classpath">
-		<pathelement location="${org.apache.tomcat:catalina-ant:jar}" />
+		<pathelement location="lib/catalina-ant-6.0.36.jar" />
 	</path>
 
 	<taskdef name="install" classname="org.apache.catalina.ant.InstallTask">
