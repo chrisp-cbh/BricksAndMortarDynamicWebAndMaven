@@ -13,5 +13,6 @@ public class OrderController {
 	public void createOrder(Date date, int tillId, int salesPersonId) {
 		this.currentOrder = new Order(date, tillId, salesPersonId);
 		
+		
 	}
 }
