@@ -112,9 +112,22 @@ public class OrderControllerTest {
 	}
 	
 	@Test(expected = OrderLineInvalidException.class)
-	public void whenOrderLineIsAddedWithnegativeQtyThenThrowException() {
+	public void whenOrderLineIsAddedWithNegativeQtyThenThrowException() {
 		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
 		orderController.addOrderLine("123456", -1, 5.67, 0.2, "EA");
+	}
+	
+	@Test(expected = NoOrderPresentException.class)
+	public void whenOrderLineUpdatedWhenNoOrderThenThrowException() {
+		orderController.updateOrderLineQuantity(1, 4);
+	}
+
+	@Test
+	public void whenOrderLineIsUpdatedNewQtyReturnedMaxValue() {
+		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
+		int lineId = orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
+		orderController.updateOrderLineQuantity(lineId, Integer.MAX_VALUE);
+		assertEquals(Integer.MAX_VALUE,orderController.getCurrentOrderLine(lineId).quantity);
 	}
 	
 	private Date createDate(int year, int month, int day)

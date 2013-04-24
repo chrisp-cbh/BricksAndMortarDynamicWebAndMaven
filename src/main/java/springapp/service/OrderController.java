@@ -31,6 +31,9 @@ public class OrderController {
 	}
 
 	public void updateOrderLineQuantity(int lineId, int quantity) {
+		if (this.currentOrder == null) {
+			throw new NoOrderPresentException();
+		}
 		if (quantity <= 0) {
 			throw new OrderLineInvalidException();
 		}
