@@ -5,14 +5,14 @@ import java.util.Date;
 public class Order {
 
 	public int tillId;
-	public int salesAssistentId;
+	public int salesAssistantId;
 	public int orderID;
 	public Date date;
 
 	public Order(int INPtillId, int INPsaleAssistentId, Date orderDate) {
 		
 		tillId = INPtillId;	
-		salesAssistentId = INPsaleAssistentId;
+		salesAssistantId = INPsaleAssistentId;
 		date = orderDate;
 	}
 
