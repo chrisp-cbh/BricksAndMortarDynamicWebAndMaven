@@ -47,4 +47,24 @@ public class ValidationTests {
 		assertTrue(validation.isValidForUpdate(null, "123"));
 	}
 	
+	@Test
+	public void isValidForUpdateReturnsFalseIfTillIdIsEmpty(){
+		assertFalse(validation.isValidForUpdate("", "afdsaf"));
+	}
+	
+	@Test
+	public void isValidForUpdateReturnsFalseIfUserIdIsEmpty(){
+		assertFalse(validation.isValidForUpdate("vfdsf", ""));
+	}
+	
+	@Test
+	public void isValidForUpdateReturnsFalseIfTillIdIsEmptyAndUserIdIsNull(){
+		assertFalse(validation.isValidForUpdate("", null));
+	}
+	
+	@Test
+	public void isValidForUpdateReturnsFalseIfTillIdIsNullAndUserIdIsEmpty(){
+		assertFalse(validation.isValidForUpdate(null, ""));
+	}
+	
 }
