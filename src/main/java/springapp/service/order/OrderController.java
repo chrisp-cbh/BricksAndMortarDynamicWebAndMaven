@@ -2,6 +2,8 @@ package springapp.service.order;
 
 import java.sql.Date;
 
+import springapp.service.Order;
+
 public class OrderController {
 
 	private Order currentOrder;
@@ -11,8 +13,6 @@ public class OrderController {
 	}
 
 	public void createOrder(Date date, int tillId, int salesPersonId) {
-		this.currentOrder = new Order(date, tillId, salesPersonId);
-		
-		
+		this.currentOrder = new Order(tillId, salesPersonId, date);
 	}
 }
