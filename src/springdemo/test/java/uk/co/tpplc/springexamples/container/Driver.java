@@ -6,5 +6,7 @@ public interface Driver {
 	
 	public String getQuote();
 	public void setQuote(String value);
+	
+	public String getName();
 
 }

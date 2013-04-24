@@ -20,4 +20,9 @@ public class Murdock implements Driver {
 		quote = value;
 	}
 
+	@Override
+	public String getName() {
+		return "Murdock";
+	}
+
 }

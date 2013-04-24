@@ -12,4 +12,9 @@ public class Flat4Diesel implements Engine{
 		return "clunck, lurch";
 	}
 
+	@Override
+	public String getType() {
+		return "Flat4Diesel";
+	}
+
 }

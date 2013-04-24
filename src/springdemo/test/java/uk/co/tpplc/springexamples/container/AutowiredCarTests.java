@@ -1,5 +1,7 @@
 package uk.co.tpplc.springexamples.container;
 
+import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +17,9 @@ public class AutowiredCarTests {
 
 	@Autowired
 	Car car;
+	
+	@Autowired
+	Driver ba;
 
 	@Before
 	public void setup() {
@@ -23,5 +28,11 @@ public class AutowiredCarTests {
 	@Test
 	public void letsSeeIfOurCarIsWiredUp(){
 		System.out.println("Autowired - " +car.start());
+	}
+	
+	@Test
+	public void getAQuoteFromBA(){
+		System.out.println("BA, what do you think? " + ba.getQuote());
+		assertEquals("BA", ba.getName());
 	}
 }

@@ -12,4 +12,9 @@ public class V8Petrol implements Engine {
 		return "prrrrr";
 	}
 
+	@Override
+	public String getType() {
+		return "V8";
+	}
+
 }
