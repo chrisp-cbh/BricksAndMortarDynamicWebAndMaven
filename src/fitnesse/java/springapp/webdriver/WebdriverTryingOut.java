@@ -11,7 +11,7 @@ public class WebdriverTryingOut {
 
 	@Test
 	public void seeIfTheApplicationIsUp() {
-		System.setProperty("webdriver.chrome.driver", "C:\\workspace\\BricksAndMortar\\lib\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\workspace\\BricksAndMortarDynamicWebAndMaven\\lib\\chromedriver.exe");
 		//FirefoxProfile profile = new FirefoxProfile(new File("C:\\workspace\\FitnesseProfile"));                  
 //		WebDriver driver = new FirefoxDriver(profile);
 //		WebDriver driver = new HtmlUnitDriver();

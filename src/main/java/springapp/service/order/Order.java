@@ -14,4 +14,8 @@ public class Order {
 		this.date = date;
 	}
 
+	public int addOrderLine(OrderLine orderLine) {
+		return 0;
+	}
+
 }
