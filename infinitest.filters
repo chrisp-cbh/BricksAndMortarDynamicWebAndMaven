@@ -6,3 +6,6 @@ springapp\.webdriver\..*
 
 Longer running integration test:
 .*Jdbc*
+
+springapp\.fitnesse\.AllOpenSales*
+springapp\.fitnesse\.CreateSaleTests*

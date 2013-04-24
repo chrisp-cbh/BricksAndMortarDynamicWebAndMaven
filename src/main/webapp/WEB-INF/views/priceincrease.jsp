@@ -24,7 +24,7 @@
     </tr>
   </table>
   <br>
-  <input type="submit" align="center" value="Execute">
+  <input type="submit" value="Execute">
 </form:form>
 <a href="<c:url value="welcome.htm"/>">Home</a>
 </body>
