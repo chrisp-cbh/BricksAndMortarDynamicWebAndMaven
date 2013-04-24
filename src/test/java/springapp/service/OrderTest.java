@@ -22,6 +22,7 @@ public class OrderTest {
 		assertEquals(tillId, order.tillId);
 		assertEquals(salesAssistantId, order.salesAssistantId);
 		assertEquals(orderDate, order.date);
+		assertNotNull(order.id);
 	}
 	
 	@Test
@@ -40,6 +41,17 @@ public class OrderTest {
 		assertEquals(tillId, order.tillId);
 		assertEquals(salesAssistantId, order.salesAssistantId);
 		assertEquals(orderDate, order.date);
+		assertNotNull(order.id);
+	}
+	
+
+	@Test
+	public void twoInstancesOfOrderDoNotHaveTheSameId()
+	{
+		Order orderOne = new Order(1,2,new Date());
+		Order orderTwo = new Order(1,2,new Date());
+
+		assertNotSame(orderOne.id, orderTwo.id);		
 	}
 	
 	@Test
