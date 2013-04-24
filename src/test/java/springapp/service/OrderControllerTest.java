@@ -92,6 +92,30 @@ public class OrderControllerTest {
 		orderController.updateOrderLineQuantity(lineId, 0);
 	}
 	
+	@Test(expected = OrderLineInvalidException.class)
+	public void whenOrderLineIsUpdatedToNegativeThenThrowException() {
+		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
+		int lineId = orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
+		orderController.updateOrderLineQuantity(lineId, -2);
+	}
+	
+	@Test(expected = OrderLineInvalidException.class)
+	public void whenOrderLineIsUpdatedButNotCreatedThenThrowException() {
+		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
+			orderController.updateOrderLineQuantity(5, 3);
+	}
+
+	@Test(expected = OrderLineInvalidException.class)
+	public void whenOrderLineIsAddedWithZeroQtyThenThrowException() {
+		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
+		orderController.addOrderLine("123456", 0, 5.67, 0.2, "EA");
+	}
+	
+	@Test(expected = OrderLineInvalidException.class)
+	public void whenOrderLineIsAddedWithnegativeQtyThenThrowException() {
+		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
+		orderController.addOrderLine("123456", -1, 5.67, 0.2, "EA");
+	}
 	
 	private Date createDate(int year, int month, int day)
 	{

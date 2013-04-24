@@ -8,7 +8,7 @@ public class OrderController {
 
 	private Order currentOrder;
 
-	protected Order getCurrentOrder() {
+	public Order getCurrentOrder() {
 		return this.currentOrder;
 	}
 
@@ -21,6 +21,9 @@ public class OrderController {
 		if (this.currentOrder == null) {
 			throw new NoOrderPresentException();
 		}
+		if (quantity <= 0) {
+			throw new OrderLineInvalidException();
+		}
 		OrderLine orderLine = new OrderLine(sku, quantity, unitPrice, vatRate,
 				uom);
 		this.currentOrder.orderLines.add(orderLine);
@@ -28,7 +31,10 @@ public class OrderController {
 	}
 
 	public void updateOrderLineQuantity(int lineId, int quantity) {
-		if (quantity == 0) {
+		if (quantity <= 0) {
+			throw new OrderLineInvalidException();
+		}
+		if (lineId > this.currentOrder.orderLines.size()) {
 			throw new OrderLineInvalidException();
 		}
 		getCurrentOrderLine(lineId).quantity = quantity;
