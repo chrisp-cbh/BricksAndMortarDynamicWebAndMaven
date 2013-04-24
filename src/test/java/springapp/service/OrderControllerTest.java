@@ -1,4 +1,4 @@
-package springapp.service.order;
+package springapp.service;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,8 @@ import java.sql.Date;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import springapp.service.OrderController;
 
 public class OrderControllerTest {
 
@@ -31,7 +33,7 @@ public class OrderControllerTest {
 	public void whenOrderCreatedThenCurrentOrderIsCorrect() {
 		orderController.createOrder(new Date(2013, 06, 21), 4, 7);
 		assertEquals(4, orderController.getCurrentOrder().tillId);
-		assertEquals(7, orderController.getCurrentOrder().salesPersonId);
+		assertEquals(7, orderController.getCurrentOrder().salesAssistentId);
 		assertEquals(new Date(2013, 6, 21),
 				orderController.getCurrentOrder().date);
 	}
@@ -41,7 +43,7 @@ public class OrderControllerTest {
 		orderController.createOrder(new Date(2013, 04, 18), 3, 4);
 		orderController.createOrder(new Date(2013, 06, 21), 4, 7);
 		assertEquals(4, orderController.getCurrentOrder().tillId);
-		assertEquals(7, orderController.getCurrentOrder().salesPersonId);
+		assertEquals(7, orderController.getCurrentOrder().salesAssistentId);
 		assertEquals(new Date(2013, 6, 21),
 				orderController.getCurrentOrder().date);
 	}
@@ -51,13 +53,5 @@ public class OrderControllerTest {
 		int lineId = orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
 		assertTrue(lineId != 0);
 	}
-
-	@Test
-	public void whenAnotherOrderLineAddedToOrderThenUniqueIdIsReturned() {
-		int line1Id = orderController
-				.addOrderLine("123456", 4, 5.67, 0.2, "EA");
-		int line2Id = orderController
-				.addOrderLine("123456", 4, 5.67, 0.2, "EA");
-		assertTrue(line1Id != line2Id);
-	}
+	
 }
