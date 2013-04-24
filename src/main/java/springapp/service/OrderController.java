@@ -1,6 +1,6 @@
 package springapp.service;
 
-import java.sql.Date;
+import java.util.Date;
 
 import springapp.service.Order;
 
@@ -18,8 +18,23 @@ public class OrderController {
 
 	public int addOrderLine(String sku, int quantity, double unitPrice,
 			double vatRate, String uom) {
-		OrderLine orderLine = new OrderLine(sku, quantity, unitPrice, vatRate, uom);
-		
-		return 1;
+		if (this.currentOrder == null) {
+			throw new NoOrderPresentException();
+		}
+		OrderLine orderLine = new OrderLine(sku, quantity, unitPrice, vatRate,
+				uom);
+		this.currentOrder.orderLines.add(orderLine);
+		return this.currentOrder.orderLines.size();
+	}
+
+	public void updateOrderLineQuantity(int lineId, int quantity) {
+		if (quantity == 0) {
+			throw new OrderLineInvalidException();
+		}
+		getCurrentOrderLine(lineId).quantity = quantity;
+	}
+
+	public OrderLine getCurrentOrderLine(int lineId) {
+		return this.currentOrder.orderLines.get(lineId-1);
 	}
 }
