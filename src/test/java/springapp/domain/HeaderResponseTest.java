@@ -12,5 +12,7 @@ public class HeaderResponseTest {
 		headerResponse.status = "OK";
 		assertEquals("OK",headerResponse.status);
 	}
-
+	
+//	@Test
+//	public void
 }
