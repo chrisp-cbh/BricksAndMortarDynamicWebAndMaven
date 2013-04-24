@@ -53,5 +53,12 @@ public class OrderControllerTest {
 		int lineId = orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
 		assertTrue(lineId != 0);
 	}
-	
+
+	//@Test
+	public void whenAnotherOrderLineAddedToOrderThenIdsAreDifferent() {
+		int line1Id = orderController.addOrderLine("987654", 3, 4.67, 0.1, "BOX");
+		int line2Id = orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
+		assertTrue(line1Id != line2Id);
+	}
+
 }

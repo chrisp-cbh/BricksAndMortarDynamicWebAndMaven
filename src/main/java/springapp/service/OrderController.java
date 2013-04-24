@@ -18,6 +18,8 @@ public class OrderController {
 
 	public int addOrderLine(String sku, int quantity, double unitPrice,
 			double vatRate, String uom) {
+		OrderLine orderLine = new OrderLine(sku, quantity, unitPrice, vatRate, uom);
+		
 		return 1;
 	}
 }
