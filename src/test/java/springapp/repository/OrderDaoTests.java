@@ -8,8 +8,6 @@ import springapp.service.Order;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-
-
 public class OrderDaoTests {
 
 	@Test
