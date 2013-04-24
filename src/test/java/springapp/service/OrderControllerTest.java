@@ -16,7 +16,7 @@ public class OrderControllerTest {
 
 	@Before
 	public void Setup() {
-		orderController = new OrderController();
+		orderController = new OrderController(new Validator());
 	}
 
 	@Test
@@ -51,7 +51,7 @@ public class OrderControllerTest {
 
 	@Test
 	public void whenOrderLineAddedToOrderThenIdIsReturned() {
-		orderController.createOrder(createDate(2013,6,21), 4, 7);
+		orderController.createOrder(createDate(2013, 6, 21), 4, 7);
 		int lineId = orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
 		assertTrue(lineId != 0);
 	}
@@ -60,49 +60,51 @@ public class OrderControllerTest {
 	public void whenOrderLineAddedToOrderThenIdIsReturnedAs1() {
 		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
 		int lineId = orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
-		assertEquals(1,lineId);
+		assertEquals(1, lineId);
 	}
-	
+
 	@Test
 	public void whenSecondOrderLineAddedToOrderThenIdIsReturnedAs2() {
 		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
-		int line1Id = orderController.addOrderLine("987654", 3, 4.67, 0.1, "BOX");
-		int line2Id = orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
-		assertEquals(1,line1Id);
-		assertEquals(2,line2Id);
+		int line1Id = orderController.addOrderLine("987654", 3, 4.67, 0.1,
+				"BOX");
+		int line2Id = orderController
+				.addOrderLine("123456", 4, 5.67, 0.2, "EA");
+		assertEquals(1, line1Id);
+		assertEquals(2, line2Id);
 	}
-	
+
 	@Test(expected = NoOrderPresentException.class)
 	public void whenOrderLineAddedToOrderAndNoOrderPresentInControllerThenExceptionIsThrown() {
 		orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
 	}
-	
+
 	@Test
 	public void whenOrderLineIsUpdatedNewQtyReturned() {
 		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
 		int lineId = orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
 		orderController.updateOrderLineQuantity(lineId, 5);
-		assertEquals(5,orderController.getCurrentOrderLine(lineId).quantity);
+		assertEquals(5, orderController.getCurrentOrderLine(lineId).quantity);
 	}
-	
+
 	@Test(expected = OrderLineInvalidException.class)
 	public void whenOrderLineIsUpdatedToZeroThenThrowException() {
 		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
 		int lineId = orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
 		orderController.updateOrderLineQuantity(lineId, 0);
 	}
-	
+
 	@Test(expected = OrderLineInvalidException.class)
 	public void whenOrderLineIsUpdatedToNegativeThenThrowException() {
 		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
 		int lineId = orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
 		orderController.updateOrderLineQuantity(lineId, -2);
 	}
-	
+
 	@Test(expected = OrderLineInvalidException.class)
 	public void whenOrderLineIsUpdatedButNotCreatedThenThrowException() {
 		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
-			orderController.updateOrderLineQuantity(5, 3);
+		orderController.updateOrderLineQuantity(5, 3);
 	}
 
 	@Test(expected = OrderLineInvalidException.class)
@@ -110,13 +112,13 @@ public class OrderControllerTest {
 		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
 		orderController.addOrderLine("123456", 0, 5.67, 0.2, "EA");
 	}
-	
+
 	@Test(expected = OrderLineInvalidException.class)
 	public void whenOrderLineIsAddedWithNegativeQtyThenThrowException() {
 		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
 		orderController.addOrderLine("123456", -1, 5.67, 0.2, "EA");
 	}
-	
+
 	@Test(expected = NoOrderPresentException.class)
 	public void whenOrderLineUpdatedWhenNoOrderThenThrowException() {
 		orderController.updateOrderLineQuantity(1, 4);
@@ -127,13 +129,13 @@ public class OrderControllerTest {
 		orderController.createOrder(createDate(2013, 06, 21), 4, 7);
 		int lineId = orderController.addOrderLine("123456", 4, 5.67, 0.2, "EA");
 		orderController.updateOrderLineQuantity(lineId, Integer.MAX_VALUE);
-		assertEquals(Integer.MAX_VALUE,orderController.getCurrentOrderLine(lineId).quantity);
+		assertEquals(Integer.MAX_VALUE,
+				orderController.getCurrentOrderLine(lineId).quantity);
 	}
-	
-	private Date createDate(int year, int month, int day)
-	{
+
+	private Date createDate(int year, int month, int day) {
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(year, month, day, 0,0,0);
+		calendar.set(year, month, day, 0, 0, 0);
 		calendar.set(Calendar.MILLISECOND, 0);
 		return calendar.getTime();
 	}

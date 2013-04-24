@@ -7,7 +7,13 @@ import springapp.service.Order;
 public class OrderController {
 
 	private Order currentOrder;
+	private Validator validator;
 
+	public OrderController(Validator validator)
+	{
+		this.validator = validator;
+	}
+	
 	public Order getCurrentOrder() {
 		return this.currentOrder;
 	}
@@ -18,10 +24,10 @@ public class OrderController {
 
 	public int addOrderLine(String sku, int quantity, double unitPrice,
 			double vatRate, String uom) {
-		if (this.currentOrder == null) {
+		if (!this.validator.CurrentOrderIsPresent(this.currentOrder)) {
 			throw new NoOrderPresentException();
 		}
-		if (quantity <= 0) {
+		if (!this.validator.OrderLineQuantityIsValid(quantity)) {
 			throw new OrderLineInvalidException();
 		}
 		OrderLine orderLine = new OrderLine(sku, quantity, unitPrice, vatRate,
@@ -31,10 +37,10 @@ public class OrderController {
 	}
 
 	public void updateOrderLineQuantity(int lineId, int quantity) {
-		if (this.currentOrder == null) {
+		if (!this.validator.CurrentOrderIsPresent(this.currentOrder)) {
 			throw new NoOrderPresentException();
 		}
-		if (quantity <= 0) {
+		if (!this.validator.OrderLineQuantityIsValid(quantity)) {
 			throw new OrderLineInvalidException();
 		}
 		if (lineId > this.currentOrder.orderLines.size()) {
