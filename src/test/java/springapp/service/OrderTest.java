@@ -41,4 +41,17 @@ public class OrderTest {
 		assertEquals(salesAssistantId, order.salesAssistantId);
 		assertEquals(orderDate, order.date);
 	}
+	
+	@Test
+	public void orderLineCanBeAddedToOrderObject()
+	{
+		Order order = new Order(10, 4, new Date());
+		OrderLine orderLine = new OrderLine("sku", 1, 10.0, 20.0, "uom");
+		
+		order.orderLines.add(orderLine);		
+		assertEquals(orderLine, order.orderLines.get(0));
+	}
+
+	
+
 }
