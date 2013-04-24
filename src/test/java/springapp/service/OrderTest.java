@@ -22,6 +22,7 @@ public class OrderTest {
 		assertEquals(tillId, order.tillId);
 		assertEquals(salesAssistantId, order.salesAssistantId);
 		assertEquals(orderDate, order.date);
+		assertNotNull(order.id);
 	}
 	
 	@Test
@@ -40,6 +41,17 @@ public class OrderTest {
 		assertEquals(tillId, order.tillId);
 		assertEquals(salesAssistantId, order.salesAssistantId);
 		assertEquals(orderDate, order.date);
+		assertNotNull(order.id);
+	}
+	
+
+	@Test
+	public void twoInstancesOfOrderDoNotHaveTheSameId()
+	{
+		Order orderOne = new Order(1,2,new Date());
+		Order orderTwo = new Order(1,2,new Date());
+
+		assertNotSame(orderOne.id, orderTwo.id);		
 	}
 	
 	@Test
@@ -52,6 +64,22 @@ public class OrderTest {
 		assertEquals(orderLine, order.orderLines.get(0));
 	}
 
-	
+	@Test
+	public void multipleOrderLinesCanBeAddedToOrderObject()
+	{
+		OrderLine firstOrderLine = new OrderLine("sku1", 1, 15.0, 20.0, "M3");
+		OrderLine secondOrderLine = new OrderLine("sku2", 2, 15.0, 20.0, "M3");
+		OrderLine thirdOrderLine = new OrderLine("sku3", 3, 15.0, 20.0, "M3");
+		
+		Order order = new Order(10, 2, new Date());
+		
+		order.orderLines.add(firstOrderLine);
+		order.orderLines.add(secondOrderLine);
+		order.orderLines.add(thirdOrderLine);
+		
+		assertEquals(firstOrderLine, order.orderLines.get(0));
+		assertEquals(secondOrderLine, order.orderLines.get(1));
+		assertEquals(thirdOrderLine, order.orderLines.get(2));
+	}
 
 }

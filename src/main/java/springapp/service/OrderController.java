@@ -1,14 +1,20 @@
 package springapp.service;
 
-import java.sql.Date;
+import java.util.Date;
 
 import springapp.service.Order;
 
 public class OrderController {
 
 	private Order currentOrder;
+	private Validator validator;
 
-	protected Order getCurrentOrder() {
+	public OrderController(Validator validator)
+	{
+		this.validator = validator;
+	}
+	
+	public Order getCurrentOrder() {
 		return this.currentOrder;
 	}
 
@@ -18,6 +24,32 @@ public class OrderController {
 
 	public int addOrderLine(String sku, int quantity, double unitPrice,
 			double vatRate, String uom) {
-		return 1;
+		if (!this.validator.CurrentOrderIsPresent(this.currentOrder)) {
+			throw new NoOrderPresentException();
+		}
+		if (!this.validator.OrderLineQuantityIsValid(quantity)) {
+			throw new OrderLineInvalidException();
+		}
+		OrderLine orderLine = new OrderLine(sku, quantity, unitPrice, vatRate,
+				uom);
+		this.currentOrder.orderLines.add(orderLine);
+		return this.currentOrder.orderLines.size();
+	}
+
+	public void updateOrderLineQuantity(int lineId, int quantity) {
+		if (!this.validator.CurrentOrderIsPresent(this.currentOrder)) {
+			throw new NoOrderPresentException();
+		}
+		if (!this.validator.OrderLineQuantityIsValid(quantity)) {
+			throw new OrderLineInvalidException();
+		}
+		if (lineId > this.currentOrder.orderLines.size()) {
+			throw new OrderLineInvalidException();
+		}
+		getCurrentOrderLine(lineId).quantity = quantity;
+	}
+
+	public OrderLine getCurrentOrderLine(int lineId) {
+		return this.currentOrder.orderLines.get(lineId-1);
 	}
 }

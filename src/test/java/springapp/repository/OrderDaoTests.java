@@ -1,6 +1,6 @@
 package springapp.repository;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class OrderDaoTests {
 	public void OrderCanBePlacedUsingInterface() {
 		
 		IOrderDao orderDao = mock(IOrderDao.class);
-		Order order = new Order(4,6,new Date(2013,04,25));
+		Order order = new Order(4,6,Calendar.getInstance().getTime());
 		orderDao.Place(order);
 		
 		verify(orderDao).Place(order);
@@ -25,7 +25,9 @@ public class OrderDaoTests {
 		
 		IOrderDao orderDao = new OrderDao();
 		
-		Order order = new Order(4,6,new Date(2013,04,25));
+		Order order = new Order(4,6,Calendar.getInstance().getTime());
 		assertTrue(orderDao.Place(order));
 	}
+
+	
 }
