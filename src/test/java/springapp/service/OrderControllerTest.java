@@ -33,7 +33,7 @@ public class OrderControllerTest {
 	public void whenOrderCreatedThenCurrentOrderIsCorrect() {
 		orderController.createOrder(new Date(2013, 06, 21), 4, 7);
 		assertEquals(4, orderController.getCurrentOrder().tillId);
-		assertEquals(7, orderController.getCurrentOrder().salesAssistentId);
+		assertEquals(7, orderController.getCurrentOrder().salesAssistantId);
 		assertEquals(new Date(2013, 6, 21),
 				orderController.getCurrentOrder().date);
 	}
@@ -43,7 +43,7 @@ public class OrderControllerTest {
 		orderController.createOrder(new Date(2013, 04, 18), 3, 4);
 		orderController.createOrder(new Date(2013, 06, 21), 4, 7);
 		assertEquals(4, orderController.getCurrentOrder().tillId);
-		assertEquals(7, orderController.getCurrentOrder().salesAssistentId);
+		assertEquals(7, orderController.getCurrentOrder().salesAssistantId);
 		assertEquals(new Date(2013, 6, 21),
 				orderController.getCurrentOrder().date);
 	}
