@@ -52,6 +52,22 @@ public class OrderTest {
 		assertEquals(orderLine, order.orderLines.get(0));
 	}
 
-	
+	@Test
+	public void multipleOrderLinesCanBeAddedToOrderObject()
+	{
+		OrderLine firstOrderLine = new OrderLine("sku1", 1, 15.0, 20.0, "M3");
+		OrderLine secondOrderLine = new OrderLine("sku2", 2, 15.0, 20.0, "M3");
+		OrderLine thirdOrderLine = new OrderLine("sku3", 3, 15.0, 20.0, "M3");
+		
+		Order order = new Order(10, 2, new Date());
+		
+		order.orderLines.add(firstOrderLine);
+		order.orderLines.add(secondOrderLine);
+		order.orderLines.add(thirdOrderLine);
+		
+		assertEquals(firstOrderLine, order.orderLines.get(0));
+		assertEquals(secondOrderLine, order.orderLines.get(1));
+		assertEquals(thirdOrderLine, order.orderLines.get(2));
+	}
 
 }
