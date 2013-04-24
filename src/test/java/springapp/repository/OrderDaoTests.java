@@ -1,19 +1,33 @@
 package springapp.repository;
 
+import java.util.Date;
+
 import org.junit.Test;
+
+import springapp.service.Order;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import springapp.dummy.Order;
+
 
 public class OrderDaoTests {
 
 	@Test
-	public void OrderCanBePlaced() {
+	public void OrderCanBePlacedUsingInterface() {
+		
 		IOrderDao orderDao = mock(IOrderDao.class);
-		Order order = new Order(0,0);
+		Order order = new Order(4,6,new Date(2013,04,25));
 		orderDao.Place(order);
 		
 		verify(orderDao).Place(order);
 	}
 
+	@Test
+	public void OrderCanBePlaced() {
+		
+		IOrderDao orderDao = new OrderDao();
+		
+		Order order = new Order(4,6,new Date(2013,04,25));
+		assertTrue(orderDao.Place(order));
+	}
 }
