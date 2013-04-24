@@ -14,4 +14,8 @@ public class Validation {
 		
 		return status;
 	}
+
+	public boolean isValidForUpdate(String tillId, String userId) {		
+		return (tillId != null) || (userId != null);
+	}
 }
