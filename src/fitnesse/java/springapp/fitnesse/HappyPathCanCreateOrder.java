@@ -18,9 +18,9 @@ public class HappyPathCanCreateOrder
 	
 	public List<Object> query() 
 	{
-		ArrayList<Object> queryResults = new ArrayList<Object>();
+		List<Object> queryResults = new ArrayList<Object>();
 		OrderHeaderManager ohm = new OrderHeaderManager();
-		//queryResults = DataRetrieval.buildSingleObjectList(ohm.CreateOrder(this.tillID, this.userID));
+		queryResults.add(DataRetrieval.buildSingleObjectList(ohm.createResponse(this.tillID, this.userID)));
 
 		return queryResults;
 	}

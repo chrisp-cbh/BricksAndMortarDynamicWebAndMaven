@@ -38,7 +38,7 @@ public class DataRetrieval
 			}
 			catch (Exception e)
 			{
-				// throw new Exception(e.getMessage());
+				throw new RuntimeException(e.getMessage());
 			}
 		}
 		
