@@ -1,6 +1,6 @@
 package springapp.repository;
 
-import springapp.dummy.Order;
+import springapp.service.Order;
 
 public interface IOrderDao {
 

@@ -17,7 +17,4 @@ public class Order {
 		salesAssistantId = INPsaleAssistentId;
 		date = orderDate;
 	}
-
-
-
 }
