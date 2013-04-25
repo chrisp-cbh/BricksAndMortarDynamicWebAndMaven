@@ -9,7 +9,15 @@
                            http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 	<bean id="rocketShip" class="uk.co.tpplc.springexamples.rocketship.mstar.RocketShip">
-		<constructor-arg value="Mr Snuggles"/>
+		<constructor-arg value="Mr Snuggles" />
+		<property name="engine" ref="engine1" />
 	</bean>
 	
+	<bean id="engine1" class="uk.co.tpplc.springexamples.rocketship.mstar.Engine">
+		<constructor-arg value="v8" />
+	</bean>
+	
+	<bean id="engine2" class="uk.co.tpplc.springexamples.rocketship.mstar.Engine">
+		<constructor-arg value="liquidfuel" />
+	</bean>	
 </beans>
