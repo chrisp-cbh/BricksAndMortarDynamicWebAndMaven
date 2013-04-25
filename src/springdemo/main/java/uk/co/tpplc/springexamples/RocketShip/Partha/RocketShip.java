@@ -4,6 +4,7 @@ public class RocketShip {
 	
 	protected Engine engine;
 	private String type; 
+	private Pilot pilot;
 	
 	public RocketShip(String type)
 	{
@@ -20,6 +21,16 @@ public class RocketShip {
 
 	public String getType() {
 		return type;
+	}
+
+	public void setPilot(Pilot pilot)
+	{
+		this.pilot = pilot;
+	}
+	
+	public Pilot getPilot() {
+		// TODO Auto-generated method stub
+		return pilot;
 	}
 
 }

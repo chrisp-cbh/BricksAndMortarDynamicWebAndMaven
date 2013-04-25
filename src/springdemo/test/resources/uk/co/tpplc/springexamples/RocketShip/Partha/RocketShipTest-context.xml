@@ -10,11 +10,14 @@
 
 	<bean id="rocketShip" class="uk.co.tpplc.springexamples.RocketShip.Partha.RocketShip">
 		<property name="engine" ref="arian" />
+		<property name="pilot" ref="josh" />
 		<constructor-arg value="Moon Lander" />
 	</bean>
 
 	<bean id="arian" class="uk.co.tpplc.springexamples.RocketShip.Partha.ArianRocket" />
 
 	<bean id="spaceshuttle" class="uk.co.tpplc.springexamples.RocketShip.Partha.SpaceShuttle" />
+	
+	<bean id="josh" class="uk.co.tpplc.springexamples.RocketShip.Partha.PilotJosh" />
 
 </beans>
