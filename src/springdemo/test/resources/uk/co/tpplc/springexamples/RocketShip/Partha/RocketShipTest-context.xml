@@ -11,6 +11,7 @@
 	<bean id="rocketShip" class="uk.co.tpplc.springexamples.RocketShip.Partha.RocketShip">
 		<property name="engine" ref="arian" />
 		<property name="pilot" ref="josh" />
+		<property name="weapon" ref="laser" />
 		<constructor-arg value="Moon Lander" />
 	</bean>
 
@@ -19,5 +20,7 @@
 	<bean id="spaceshuttle" class="uk.co.tpplc.springexamples.RocketShip.Partha.SpaceShuttle" />
 	
 	<bean id="josh" class="uk.co.tpplc.springexamples.RocketShip.Partha.PilotJosh" />
+	
+	<bean id="laser" class="uk.co.tpplc.springexamples.RocketShip.Partha.DualMountedLaser" />
 
 </beans>

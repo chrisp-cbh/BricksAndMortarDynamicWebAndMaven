@@ -5,6 +5,7 @@ public class RocketShip {
 	protected Engine engine;
 	private String type; 
 	private Pilot pilot;
+	private Weapon weapon;
 	
 	public RocketShip(String type)
 	{
@@ -32,5 +33,13 @@ public class RocketShip {
 		// TODO Auto-generated method stub
 		return pilot;
 	}
+	
+	public void setWeapon(Weapon weapon)
+	{
+		this.weapon = weapon;
+	}
 
+	public Weapon getWeapon() {
+		return weapon;
+	}
 }

@@ -24,6 +24,8 @@ public class RocketShipTest extends AbstractJUnit4SpringContextTests  {
 	@Autowired
 	private Pilot josh;
 	
+	@Autowired
+	private Weapon laser;
 	
 	@Test
 	public void makeSureRocketIsWiredUp()
@@ -31,6 +33,7 @@ public class RocketShipTest extends AbstractJUnit4SpringContextTests  {
 		assertEquals("Moon Lander", rocketShip.getType());
 		assertEquals("Arian Rocket", rocketShip.getEngine().getType());
 		assertEquals("Josh reporting for duty!", rocketShip.getPilot().getMessage());
+		assertEquals("Dual-mounted hyper laser beams", rocketShip.getWeapon().getType());
 	}
 	
 	@Test
