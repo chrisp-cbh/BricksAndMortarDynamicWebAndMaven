@@ -2,8 +2,10 @@ package uk.co.tpplc.springexamples.container;
 
 public class Car {
 	
-	public Car(){
-		
+	final String make;
+	
+	public Car(String make){
+		this.make = make;
 	}
 	
 	protected Driver driver;

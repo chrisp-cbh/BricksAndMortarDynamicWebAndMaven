@@ -20,7 +20,7 @@ public class JavaWiredCarConfig {
 	
 	@Bean
 	public Car car(){
-		Car car = new Car();
+		Car car = new Car("ford");
 		car.setDriver(murdock());
 		car.setEngine(v8());
 		return car;

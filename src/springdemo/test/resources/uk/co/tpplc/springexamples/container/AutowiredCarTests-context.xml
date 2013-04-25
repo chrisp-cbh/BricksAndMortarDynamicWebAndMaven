@@ -1,5 +1,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
@@ -13,7 +15,8 @@
 
 	<bean id="car" class="uk.co.tpplc.springexamples.container.Car"
 		p:driver-ref="murdock"
-		p:engine-ref="v8" />
+		p:engine-ref="v8"
+		c:make="gm"/>
 
 	<bean id="v8" class="uk.co.tpplc.springexamples.container.V8Petrol" />
 

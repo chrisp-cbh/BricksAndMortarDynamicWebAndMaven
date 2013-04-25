@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
 org.moreunit.preferences.version=2
+org.moreunit.testClassNameTemplate=${srcFile}Test*
+org.moreunit.unitsourcefolder=BricksAndMortarDynamicWebAndMaven\:src/main/java\:BricksAndMortarDynamicWebAndMaven\:src/test/java\#BricksAndMortarDynamicWebAndMaven\:src/springdemo/main/java\:BricksAndMortarDynamicWebAndMaven\:src/springdemo/test/java\#BricksAndMortarDynamicWebAndMaven\:src/fitnesse/java\:BricksAndMortarDynamicWebAndMaven\:src/fitnesse/java
+org.moreunit.useprojectsettings=true
