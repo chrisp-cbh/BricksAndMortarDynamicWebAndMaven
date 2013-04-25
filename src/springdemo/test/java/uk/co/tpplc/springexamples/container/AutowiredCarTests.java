@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 // ApplicationContext will be loaded from
-// "classpath:/uk/co/tpplc/springexamples/container/CarTests-context.xml"
+// "classpath:/uk/co/tpplc/springexamples/container/AutowiredCarTests-context.xml"
 @ContextConfiguration
 public class AutowiredCarTests {
 
