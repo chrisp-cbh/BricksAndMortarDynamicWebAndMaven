@@ -28,6 +28,7 @@ public class AutowiredCarTests {
 	@Test
 	public void letsSeeIfOurCarIsWiredUp(){
 		System.out.println("Autowired - " +car.start());
+		assertEquals("gm", car.getMake());
 	}
 	
 	@Test

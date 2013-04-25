@@ -8,9 +8,14 @@ public class Car {
 		this.make = make;
 	}
 	
+	
 	protected Driver driver;
 	
 	protected Engine engine;
+
+	public String getMake(){
+		return make;
+	}
 
 	public Driver getDriver() {
 		return driver;

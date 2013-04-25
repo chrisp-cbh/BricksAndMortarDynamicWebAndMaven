@@ -24,6 +24,7 @@ public class ManualWiringCarTests extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void seeIfCarIsWiredUp() {
 		System.out.println(car.start());
+		assertEquals("chevrolet", car.getMake());
 	}
 	
 	@Test

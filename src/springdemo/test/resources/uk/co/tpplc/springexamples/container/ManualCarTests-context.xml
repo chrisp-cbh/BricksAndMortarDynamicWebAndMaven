@@ -11,7 +11,7 @@
 	<bean id="car" class="uk.co.tpplc.springexamples.container.Car">
 		<property name="driver" ref="murdock" />
 		<property name="engine" ref="diesel" />
-		<constructor-arg value="chevy"/>
+		<constructor-arg value="chevrolet"/>
 	</bean>
 
 	<bean id="v8" class="uk.co.tpplc.springexamples.container.V8Petrol" />
