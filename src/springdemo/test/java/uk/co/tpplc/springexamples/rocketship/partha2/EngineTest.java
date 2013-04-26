@@ -1,4 +1,4 @@
-package uk.co.tpplc.springexamples.RocketShip.Partha;
+package uk.co.tpplc.springexamples.rocketship.partha2;
 
 import static org.junit.Assert.*;
 

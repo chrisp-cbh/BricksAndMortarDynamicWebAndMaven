@@ -1,4 +1,4 @@
-package uk.co.tpplc.springexamples.rocketship.Partha;
+package uk.co.tpplc.springexamples.rocketship.partha2;
 
 public interface Pilot {
 	
