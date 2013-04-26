@@ -8,19 +8,19 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<bean id="rocketShip" class="uk.co.tpplc.springexamples.RocketShip.Partha.RocketShip">
+	<bean id="rocketShip" class="uk.co.tpplc.springexamples.rocketship.partha2.RocketShip">
 		<property name="engine" ref="arian" />
 		<property name="pilot" ref="josh" />
 		<property name="weapon" ref="laser" />
 		<constructor-arg value="Moon Lander" />
 	</bean>
 
-	<bean id="arian" class="uk.co.tpplc.springexamples.RocketShip.Partha.ArianRocket" />
+	<bean id="arian" class="uk.co.tpplc.springexamples.rocketship.partha2.ArianRocket" />
 
-	<bean id="spaceshuttle" class="uk.co.tpplc.springexamples.RocketShip.Partha.SpaceShuttle" />
+	<bean id="spaceshuttle" class="uk.co.tpplc.springexamples.rocketship.partha2.SpaceShuttle" />
 	
-	<bean id="josh" class="uk.co.tpplc.springexamples.RocketShip.Partha.PilotJosh" />
+	<bean id="josh" class="uk.co.tpplc.springexamples.rocketship.partha2.PilotJosh" />
 	
-	<bean id="laser" class="uk.co.tpplc.springexamples.RocketShip.Partha.DualMountedLaser" />
+	<bean id="laser" class="uk.co.tpplc.springexamples.rocketship.partha2.DualMountedLaser" />
 
 </beans>

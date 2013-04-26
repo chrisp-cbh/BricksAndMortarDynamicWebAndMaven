@@ -8,21 +8,13 @@ public class EngineTest {
 
 	@Test
 	public void testArianRocket() {
-	
-	Engine rocketType = new ArianRocket();
-	assertEquals("Arian", rocketType.getType());	
-	
+		Engine rocketType = new ArianRocket();
+		assertEquals("Arian Rocket", rocketType.getType());
 	}
 
 	@Test
 	public void testSpaceShuttle() {
-	
-	Engine rocketType = new SpaceShuttle();
-	assertEquals("Space Shuttle", rocketType.getType());		
-
+		Engine rocketType = new SpaceShuttle();
+		assertEquals("Space Shuttle", rocketType.getType());
 	}
-	
-
 }
-
-
