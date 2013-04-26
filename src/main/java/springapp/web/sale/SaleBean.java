@@ -1,5 +1,6 @@
 package springapp.web.sale;
 
+
 public class SaleBean {
 	private String salesAssistant;
 	private String tillId;
@@ -20,7 +21,7 @@ public class SaleBean {
 	public void setSalesAssistant(String val) {
 		this.salesAssistant = val;
 	}
-
+	
 	public void setTillId(String val) {
 		this.tillId = val;
 	}
