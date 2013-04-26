@@ -33,7 +33,7 @@ public class CreateSaleController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String setupForm(ModelMap model) {
-		return "createsale";
+		return "/createsale";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

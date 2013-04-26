@@ -1,5 +1,6 @@
 package uk.co.tpplc.springexamples.container;
 
+import org.apache.tomcat.util.net.SecureNioChannel.ApplicationBufferHandler;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
@@ -23,6 +24,7 @@ public class ManualWiringCarTests extends AbstractJUnit4SpringContextTests {
 	
 	@Test
 	public void seeIfCarIsWiredUp() {
+
 		System.out.println(car.start());
 		assertEquals("chevrolet", car.getMake());
 	}

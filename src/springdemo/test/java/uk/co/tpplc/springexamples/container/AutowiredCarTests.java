@@ -10,8 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-// ApplicationContext will be loaded from
-// "classpath:/uk/co/tpplc/springexamples/container/AutowiredCarTests-context.xml"
 @ContextConfiguration
 public class AutowiredCarTests {
 
@@ -29,6 +27,7 @@ public class AutowiredCarTests {
 	public void letsSeeIfOurCarIsWiredUp(){
 		System.out.println("Autowired - " +car.start());
 		assertEquals("gm", car.getMake());
+		assertEquals("Murdock", car.getDriver().getName());
 	}
 	
 	@Test
