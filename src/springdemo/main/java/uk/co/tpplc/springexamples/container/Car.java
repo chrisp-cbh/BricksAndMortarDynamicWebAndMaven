@@ -7,8 +7,7 @@ public class Car {
 	public Car(String make){
 		this.make = make;
 	}
-	
-	
+		
 	protected Driver driver;
 	
 	protected Engine engine;
