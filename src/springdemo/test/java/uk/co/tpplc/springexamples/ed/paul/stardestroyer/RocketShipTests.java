@@ -1,5 +1,7 @@
 package uk.co.tpplc.springexamples.ed.paul.stardestroyer;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
@@ -19,6 +21,11 @@ public class RocketShipTests extends AbstractJUnit4SpringContextTests {
 	public void seeIfCarIsWiredUp() { 
 		assertEquals("Ed Pope", pilotEd.getPilotName());
 	}
+	
+//	@Test
+//	public void CheckEdPilotYearsFlying() {
+//		assertEquals(5, pilotEd.pilotYearsFlying());
+//	}
 	
 	@Test
 	public void seeIfPilotPaulHasTheCorrectName() { 
