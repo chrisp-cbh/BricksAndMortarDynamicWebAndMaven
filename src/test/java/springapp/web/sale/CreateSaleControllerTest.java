@@ -46,7 +46,7 @@ public class CreateSaleControllerTest {
 	@Test
 	public void testThatWeHaveAController() {
 		CreateSaleController controller = new CreateSaleController(null);
-		assertThat("/createsale", equalTo(controller.setupForm(null)));
+		assertThat("createsale", equalTo(controller.setupForm(null)));
 	}
 
 	@Test
