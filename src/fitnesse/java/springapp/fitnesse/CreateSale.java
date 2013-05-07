@@ -1,6 +1,5 @@
 package springapp.fitnesse;
 
-
 import springapp.domain.Sale;
 
 public class CreateSale extends SpringFitnesseFixture {
