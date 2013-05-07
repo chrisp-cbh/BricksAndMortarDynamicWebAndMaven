@@ -10,6 +10,12 @@ in the build directory. If you run 'ant clean' it will tell you the filename
 it will look for in the first couple of lines of output.
 Copy and existing one and change as neeed.
 
+download the depenant jar files as a zip file
+https://www.dropbox.com/s/zfnpis3fvhpymz2/BricksAndMortarDynamicWebAndMaven.zip
+
+unzip (using a safe unzip tool like 7zip) into the parent directory of this project. (I.e. C:\workspace where the project is C:\workspace\BricksAndMortarDynamicWebAndMaven)
+this will put jars in lib and src\webapp\WEB-INF\ib
+
 go to the db directory
 
 run the server.bat
