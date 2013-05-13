@@ -1,2 +1,1 @@
 build and test jars live in here - but the jars don't live in git.
-The pom.xml in the root directory can be used with maven to pull down all the required jars.
