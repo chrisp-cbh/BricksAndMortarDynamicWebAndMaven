@@ -4,21 +4,15 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class ManualWiringCarTests {
 
-	@Autowired
 	private Car car;
 
-	// based on bean id
-	@Autowired
 	private Engine v8;
 
-	// based on bean id
-	@Autowired
 	private Engine diesel;
 
 	@Before
