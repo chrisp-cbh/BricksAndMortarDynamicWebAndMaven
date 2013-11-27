@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public boolean addBookAround(String arg) {
+	public boolean addBookAround(String name) {
 		return true;
 	}
 }

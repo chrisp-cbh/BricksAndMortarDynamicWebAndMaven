@@ -23,7 +23,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration
 public class LoggingAspectTests {
 
-	//@Autowired
+	// @Autowired
 	private LoggingAspect loggingAspect;
 
 	private Log mockLogger;
@@ -79,9 +79,9 @@ public class LoggingAspectTests {
 		when(mockProceedingJoinPoint.getArgs()).thenReturn(
 				new String[] { "foo", "bar" });
 
-		loggingAspect.around(mockProceedingJoinPoint);
+		loggingAspect.around(mockProceedingJoinPoint, "foo");
 	}
-	
+
 	// The following test are really exploratory to exercise the AOP points
 	// they could be improved to test that the logger in the LoggerAspect is
 	// populating correct messages, but that would make some assumptions about

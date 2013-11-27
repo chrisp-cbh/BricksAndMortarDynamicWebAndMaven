@@ -8,6 +8,7 @@ public class Product implements Serializable {
 	private String description;
 	private Double price;
 	private int id;
+	private int value;
 
 	public void setId(int i) {
 		id = i;
@@ -39,6 +40,15 @@ public class Product implements Serializable {
 		buffer.append("Id: " + id + ";");
 		buffer.append("Price: " + price);
 		return buffer.toString();
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+
+	}
+
+	public int getValue() {
+		return value;
 	}
 
 }

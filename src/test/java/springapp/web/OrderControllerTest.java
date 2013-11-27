@@ -1,14 +1,18 @@
-package springapp.service;
+package springapp.web;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
-import java.util.Date;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import springapp.service.OrderController;
+import springapp.service.NoOrderPresentException;
+import springapp.service.OrderLineInvalidException;
+import springapp.service.Validator;
 
 public class OrderControllerTest {
 

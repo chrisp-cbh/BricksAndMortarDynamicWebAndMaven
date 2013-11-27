@@ -55,12 +55,13 @@ public class LoggingAspect {
 	 *  return an Object. Probably the result of joinPoint.proceed()
 	 *  If not, a NullPointerException occurs somewhere in the AOP proxy classes!!!
 	 */
-	@Around("execution(* springapp.aspect.BookService.addBookAround(..))")
-	public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+	@Around("execution(* springapp.aspect.BookService.addBookAround(String)) && args(name)")
+	public Object around(ProceedingJoinPoint joinPoint, String name) throws Throwable {
 		logger.info("aspect around");
 		logger.info("hijacked method : " + joinPoint.getSignature().getName());
 		logger.info("hijacked arguments : "
 				+ Arrays.toString(joinPoint.getArgs()));
+		logger.info("argument from args()" + name);
 		logger.info("aspect around before");
 		Object returnValue = joinPoint.proceed();
 		logger.info("aspect around after");

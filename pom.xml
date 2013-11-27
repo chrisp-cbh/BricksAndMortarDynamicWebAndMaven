@@ -12,14 +12,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-<!-- edit for training
-	<repositories>
-		<repository>
-			<id>training</id>
-			<url>file://D:\mavenrepo</url>
-		</repository>
-	</repositories>
--->
+	<!-- edit for training <repositories> <repository> <id>training</id> <url>file://D:\mavenrepo</url> 
+		</repository> </repositories> -->
 
 	<build>
 		<pluginManagement>
@@ -83,6 +77,33 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- Spring Security -->
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<version>${spring.version}</version>
+			<artifactId>spring-security-taglibs</artifactId>
+		</dependency>
+
+		<!-- aspectj -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>

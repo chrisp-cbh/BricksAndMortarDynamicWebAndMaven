@@ -11,5 +11,5 @@ public interface BookService {
 
 	public void addBadBook();
 
-	public boolean addBookAround(String string);
+	public boolean addBookAround(String name);
 }

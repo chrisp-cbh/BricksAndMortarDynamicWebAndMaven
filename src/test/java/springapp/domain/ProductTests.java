@@ -1,10 +1,11 @@
 package springapp.domain;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -50,5 +51,12 @@ public class ProductTests{
 		assertThat(toTest, containsString("Red bricks"));
 		assertThat(toTest, containsString("12321"));
 		assertThat(toTest, containsString("123.56"));
+	}
+	
+	@Test
+	public void checkProductValue() {
+		product.setValue(250);
+		
+		assertThat(product.getValue(), is(equalTo(250)));
 	}
 }
