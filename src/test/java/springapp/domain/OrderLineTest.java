@@ -1,8 +1,10 @@
-package springapp.service;
+package springapp.domain;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import springapp.domain.OrderLine;
 
 public class OrderLineTest {
 

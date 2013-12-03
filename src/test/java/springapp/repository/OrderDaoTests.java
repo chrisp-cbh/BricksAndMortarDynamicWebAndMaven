@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import org.junit.Test;
 
-import springapp.service.Order;
+import springapp.domain.Order;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 

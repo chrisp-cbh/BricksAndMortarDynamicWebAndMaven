@@ -1,6 +1,6 @@
 package springapp.repository;
 
-import springapp.service.Order;
+import springapp.domain.Order;
 
 public class OrderDao implements IOrderDao {
 

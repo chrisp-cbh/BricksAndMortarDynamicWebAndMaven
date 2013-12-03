@@ -1,12 +1,12 @@
-package springapp.service;
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
+package springapp.domain;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
 
 import java.util.Calendar;
 import java.util.Date;
-//import java.util.Calender;
+
+import org.junit.Test;
 
 public class OrderTest {
 

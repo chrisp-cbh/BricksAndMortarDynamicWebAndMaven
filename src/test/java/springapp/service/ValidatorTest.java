@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import springapp.domain.Order;
+
 public class ValidatorTest {
 
 	private Validator validator;

@@ -5,8 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
 
-import springapp.service.Order;
-import springapp.service.OrderLine;
+import springapp.domain.Order;
+import springapp.domain.OrderLine;
 import springapp.web.OrderController;
 
 public class OrderTestHarness {

@@ -9,6 +9,7 @@ public class Product implements Serializable {
 	private Double price;
 	private int id;
 	private int value;
+	private String type;
 
 	public void setId(int i) {
 		id = i;
@@ -49,6 +50,14 @@ public class Product implements Serializable {
 
 	public int getValue() {
 		return value;
+	}
+
+	public String getType() {
+		return type;
+	}
+	
+	public void setType(String type){
+		this.type = type;
 	}
 
 }

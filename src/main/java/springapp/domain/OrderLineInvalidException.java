@@ -1,4 +1,4 @@
-package springapp.service;
+package springapp.domain;
 
 public class OrderLineInvalidException extends RuntimeException{
 

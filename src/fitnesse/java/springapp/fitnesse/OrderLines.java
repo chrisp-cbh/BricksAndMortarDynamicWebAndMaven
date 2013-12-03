@@ -3,8 +3,8 @@ package springapp.fitnesse;
 import java.util.ArrayList;
 import java.util.List;
 
-import springapp.service.Order;
-import springapp.service.OrderLine;
+import springapp.domain.Order;
+import springapp.domain.OrderLine;
 
 public class OrderLines {
 	

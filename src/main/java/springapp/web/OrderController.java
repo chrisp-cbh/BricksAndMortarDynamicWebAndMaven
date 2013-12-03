@@ -2,10 +2,10 @@ package springapp.web;
 
 import java.util.Date;
 
+import springapp.domain.Order;
+import springapp.domain.OrderLine;
+import springapp.domain.OrderLineInvalidException;
 import springapp.service.NoOrderPresentException;
-import springapp.service.Order;
-import springapp.service.OrderLine;
-import springapp.service.OrderLineInvalidException;
 import springapp.service.Validator;
 
 public class OrderController {

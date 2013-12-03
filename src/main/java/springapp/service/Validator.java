@@ -1,5 +1,7 @@
 package springapp.service;
 
+import springapp.domain.Order;
+
 public class Validator {
 
 	public boolean OrderLineQuantityIsValid(int i) {

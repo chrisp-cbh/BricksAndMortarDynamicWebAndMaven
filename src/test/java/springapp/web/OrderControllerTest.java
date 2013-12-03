@@ -10,8 +10,8 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
+import springapp.domain.OrderLineInvalidException;
 import springapp.service.NoOrderPresentException;
-import springapp.service.OrderLineInvalidException;
 import springapp.service.Validator;
 
 public class OrderControllerTest {
